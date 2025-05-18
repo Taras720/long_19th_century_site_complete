@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to right, #3a1c0e, #5e2b16, #3a1c0e); border-bottom: 3px solid #d4a76a;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}" style="font-family: 'Times New Roman', serif;">
+      <div class="logo-container position-relative" style="width: 40px; height: 40px; border: 2px solid #d4a76a;">
+        <img src="{{ url_for('static', filename='images/zastavka.jpg') }}" 
+             class="position-absolute top-50 start-50 translate-middle"
+             style="max-height: 100%; max-width: 100%; height: auto; width: auto; object-fit: cover;"
+             alt="Логотип Довге 19 століття">
+      </div>
+      <span class="ms-3" style="font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Довге XIX століття</span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключити навігацію">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-family: 'Times New Roman', serif;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}" style="font-size: 1.1rem;">Головна</a>
+        </li>
+
+        <!-- Революції -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.1rem;">
+            Революції
+          </a>
+          <ul class="dropdown-menu" style="background-color: #3a1c0e; border: 1px solid #d4a76a;">
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=1) }}" style="font-family: 'Times New Roman', serif;">Французька революція (1789)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=5) }}" style="font-family: 'Times New Roman', serif;">Паризька комуна (1871)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=6) }}" style="font-family: 'Times New Roman', serif;">Американська громадянська війна (1861)</a></li>
+          </ul>
+        </li>
+
+        <!-- Війни -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.1rem;">
+            Війни
+          </a>
+          <ul class="dropdown-menu" style="background-color: #3a1c0e; border: 1px solid #d4a76a;">
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=8) }}" style="font-family: 'Times New Roman', serif;">Кримська війна (1853-1856)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=6) }}" style="font-family: 'Times New Roman', serif;">Американська громадянська війна (1861)</a></li>
+          </ul>
+        </li>
+
+        <!-- Історичні події -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.1rem;">
+            Історичні події
+          </a>
+          <ul class="dropdown-menu" style="background-color: #3a1c0e; border: 1px solid #d4a76a;">
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=2) }}" style="font-family: 'Times New Roman', serif;">Віденський конгрес (1815)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=3) }}" style="font-family: 'Times New Roman', serif;">Скасування кріпацтва в Росії (1861)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=4) }}" style="font-family: 'Times New Roman', serif;">Об'єднання Італії (1861)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=7) }}" style="font-family: 'Times New Roman', serif;">Індустріальна революція (1760-1840)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=9) }}" style="font-family: 'Times New Roman', serif;">Заснування Германської імперії (1871)</a></li>
+            <li><a class="dropdown-item text-light" href="{{ url_for('event', event_id=10) }}" style="font-family: 'Times New Roman', serif;">Велика колоніальна експансія (1880-1914)</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <form action="{{ url_for('search_page') }}" method="get" class="d-flex" role="search">
+        <input required name="query" class="form-control me-2" type="search" placeholder="Пошук" aria-label="Пошук" style="font-family: 'Times New Roman', serif;">
+        <button class="btn btn-outline-light" type="submit" style="border-color: #d4a76a; color: #d4a76a; font-family: 'Times New Roman', serif;">Пошук</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .logo-container {
+    border-radius: 50%;
+    background-color: rgba(212, 167, 106, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .navbar-brand:hover .logo-container {
+    transform: rotate(5deg);
+    border-color: #f8d7a3;
+  }
+  .nav-link {
+    position: relative;
+    margin: 0 5px;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d4a76a;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .dropdown-item:hover {
+    background-color: #5e2b16 !important;
+    color: #f8d7a3 !important;
+  }
+</style>

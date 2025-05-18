@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>{{ event['title'] }} | Довге 19ст</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <article>
+        <h1 class="mb-4 text-center">{{ event['title'] }}</h1>
+        
+        {% if event['image'] %}
+        <div class="event-image-container">
+            <img src="{{ url_for('static', filename='images/' + event['image']) }}" 
+                 alt="{{ event['title'] }}" 
+                 class="event-image">
+        </div>
+        {% endif %}
+        
+        <div class="event-content mt-4">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <p><strong>Рік:</strong> {{ event['year'] }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Місце:</strong> {{ event['location'] }}</p>
+                </div>
+            </div>
+            
+            <div class="event-description mt-4">
+                {{ event['description'] | safe }}
+            </div>
+            
+            <div class="mt-5 text-center">
+                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                    ← Повернутися до списку подій
+                </a>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}

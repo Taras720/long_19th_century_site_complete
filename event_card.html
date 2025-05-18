@@ -1,0 +1,15 @@
+<div class="card" style="width: 25rem; min-height: 22rem; border: none;">
+  <div class="overflow-hidden d-flex justify-content-center align-items-center" 
+       style="height: 150px; background-color: #f8f9fa; padding: 10px;">
+    <img class="object-fit-contain" 
+         style="height: 100%; width: auto; max-width: 100%; object-position: center;"
+         src="{{ url_for('static', filename='images/' + event['image']) }}" 
+         alt="{{ event['title'] }}" />
+  </div>
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">{{ event['title'] }}</h5>
+    <p class="card-text text-truncate mb-2">{{ event['description'] }}</p>
+    <p class="card-text text-muted mt-auto">{{ event['year'] }}, {{ event['location'] }}</p>
+    <a href="{{ url_for('event', event_id=event['id']) }}" class="btn btn-dark align-self-start">Читати</a>
+  </div>
+</div>
